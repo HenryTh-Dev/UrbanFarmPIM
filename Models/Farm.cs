@@ -10,6 +10,6 @@ namespace UrbanFarm.Models
         public int FarmId { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
-        public ICollection<PlantingArea> PlantingAreas { get; set; }
+        public ICollection<PlantingArea> PlantingAreas { get; set; } = new List<PlantingArea>();
     }
 }

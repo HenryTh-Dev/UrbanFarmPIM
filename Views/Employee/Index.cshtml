@@ -1,0 +1,36 @@
+﻿@model IEnumerable<UrbanFarm.Models.Employee>
+
+<h2>Employee List</h2>
+<p>
+    <a asp-action="Create">Create New Employee</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>CPF</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Hire Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Name</td>
+                <td>@employee.CPF</td>
+                <td>@employee.Position</td>
+                <td>@employee.Salary</td>
+                <td>@employee.HireDate.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@employee.EmployeeId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@employee.EmployeeId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@employee.EmployeeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

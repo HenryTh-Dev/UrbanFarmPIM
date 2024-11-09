@@ -1,0 +1,32 @@
+@model IEnumerable<UrbanFarm.Models.Farm>
+
+<h2>Farm List</h2>
+<p>
+    <a asp-action="Create">Create New Farm</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Planting Areas</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var farm in Model)
+        {
+            <tr>
+                <td>@farm.Name</td>
+                <td>@farm.Location</td>
+                <td>@farm.PlantingAreas?.Count() ?? 0</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@farm.FarmId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@farm.FarmId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@farm.FarmId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
