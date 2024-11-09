@@ -1,22 +1,33 @@
-@model Client
+@model UrbanFarm.Models.Planting
 
-<h2>Detalhes do Cliente</h2>
+<h2>Planting Details</h2>
 
 <div>
-    <h4>@Model.Name</h4>
+    <h4>Planting</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">CNPJ</dt>
-        <dd class="col-sm-10">@Model.CNPJ</dd>
+        <dt class="col-sm-2">Planting Date</dt>
+        <dd class="col-sm-10">@Model.PlantingDate.ToString("dd/MM/yyyy")</dd>
 
-        <dt class="col-sm-2">Endereço</dt>
-        <dd class="col-sm-10">@Model.Address</dd>
+        <dt class="col-sm-2">Planting Area</dt>
+        <dd class="col-sm-10">@Model.PlantingArea?.Name</dd>
 
-        <dt class="col-sm-2">Telefone</dt>
-        <dd class="col-sm-10">@Model.Phone</dd>
+        <dt class="col-sm-2">Resource</dt>
+        <dd class="col-sm-10">@Model.Resource?.Name</dd>
+
+        <dt class="col-sm-2">Employees</dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (var employee in Model.Employees)
+                {
+                    <li>@employee.Name</li>
+                }
+            </ul>
+        </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ClientId">Editar</a> |
-    <a asp-action="Index">Voltar à lista</a>
-</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.PlantingId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

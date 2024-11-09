@@ -10,7 +10,7 @@
         <tr>
             <th>Name</th>
             <th>Location</th>
-            <th>Planting Areas</th>
+
             <th></th>
         </tr>
     </thead>
@@ -20,7 +20,6 @@
             <tr>
                 <td>@farm.Name</td>
                 <td>@farm.Location</td>
-                <td>@farm.PlantingAreas?.Count() ?? 0</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@farm.FarmId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@farm.FarmId">Details</a> |

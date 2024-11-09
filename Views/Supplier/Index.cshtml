@@ -1,0 +1,34 @@
+@model IEnumerable<UrbanFarm.Models.Supplier>
+
+<h2>Supplier List</h2>
+<p>
+    <a asp-action="Create">Create New Supplier</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>CNPJ</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supplier in Model)
+        {
+            <tr>
+                <td>@supplier.Name</td>
+                <td>@supplier.CNPJ</td>
+                <td>@supplier.Address</td>
+                <td>@supplier.Phone</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@supplier.SupplierId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@supplier.SupplierId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@supplier.SupplierId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+@model UrbanFarm.Models.Sale
+
+<h2>Create Sale</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="SaleDate"></label>
+        <input asp-for="SaleDate" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ClientId">Client</label>
+        <select asp-for="ClientId" asp-items="ViewBag.ClientId" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Resources</label>
+        <select asp-for="SaleItems" asp-items="ViewBag.Resources" multiple="multiple" class="form-control"></select>
+        <small class="form-text text-muted">Select resources to include in this sale</small>
+    </div>
+    <div class="form-group">
+        <label asp-for="TotalAmount"></label>
+        <input asp-for="TotalAmount" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<p>
+    <a asp-action="Index">Back to List</a>
+</p>

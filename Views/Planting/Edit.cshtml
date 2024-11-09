@@ -1,29 +1,28 @@
-@model Client
+@model UrbanFarm.Models.Planting
 
-<h2>Editar Cliente</h2>
+<h2>Edit Planting</h2>
 
-<form asp-action="Edit">
-    <input type="hidden" asp-for="ClientId" />
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="PlantingId" />
     <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <label asp-for="PlantingDate"></label>
+        <input asp-for="PlantingDate" type="date" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="CNPJ"></label>
-        <input asp-for="CNPJ" class="form-control" />
-        <span asp-validation-for="CNPJ" class="text-danger"></span>
+        <label asp-for="PlantingAreaId">Planting Area</label>
+        <select asp-for="PlantingAreaId" asp-items="ViewBag.PlantingAreaId" class="form-control"></select>
     </div>
     <div class="form-group">
-        <label asp-for="Address"></label>
-        <input asp-for="Address" class="form-control" />
-        <span asp-validation-for="Address" class="text-danger"></span>
+        <label asp-for="ResourceId">Resource</label>
+        <select asp-for="ResourceId" asp-items="ViewBag.ResourceId" class="form-control"></select>
     </div>
     <div class="form-group">
-        <label asp-for="Phone"></label>
-        <input asp-for="Phone" class="form-control" />
-        <span asp-validation-for="Phone" class="text-danger"></span>
+        <label>Employees</label>
+        <select asp-for="Employees" asp-items="ViewBag.Employees" multiple="multiple" class="form-control"></select>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
+
+<p>
+    <a asp-action="Index">Back to List</a>
+</p>
