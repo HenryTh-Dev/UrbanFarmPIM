@@ -9,8 +9,8 @@ namespace UrbanFarm.Models
     {
         public int EmployeeId { get; set; }
         public string Name { get; set; }
-        public string CPF { get; set; } // Cadastro de Pessoa Física
-        public string Position { get; set; } // Cargo
+        public string CPF { get; set; } 
+        public string Position { get; set; } 
         public decimal Salary { get; set; }
         public DateTime HireDate { get; set; }
     }

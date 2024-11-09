@@ -11,7 +11,7 @@ namespace UrbanFarm.Models
         public DateTime PlantingDate { get; set; }
         public int PlantingAreaId { get; set; }
         public PlantingArea PlantingArea { get; set; }
-        public int ResourceId { get; set; } // O recurso resultante (ex: Produto colhido)
+        public int ResourceId { get; set; } 
         public Resource Resource { get; set; }
         public ICollection<Employee> Employees { get; set; }
     }

@@ -9,7 +9,7 @@ namespace UrbanFarm.Models
     {
         public int PlantingAreaId { get; set; }
         public string Name { get; set; }
-        public double Size { get; set; } // Tamanho em hectares
+        public double Size { get; set; } 
         public int FarmId { get; set; }
         public Farm Farm { get; set; }
         public ICollection<Planting> Plantings { get; set; }

@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<FarmContext>(options =>
+        options.UseSqlite("Data Source=farm.db"));
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

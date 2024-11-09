@@ -9,10 +9,9 @@ namespace UrbanFarm.Models
     {
         public int ClientId { get; set; }
         public string Name { get; set; }
-        public string CNPJ { get; set; } // Cadastro Nacional de Pessoa Jurídica
+        public string CNPJ { get; set; } 
         public string Address { get; set; }
         public string Phone { get; set; }
-        public ICollection<Sale> Sales { get; set; }
     }
 
 }

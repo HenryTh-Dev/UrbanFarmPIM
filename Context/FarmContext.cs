@@ -12,6 +12,7 @@ public class FarmContext : DbContext
     public DbSet<Sale> Sales { get; set; }
     public DbSet<SaleItem> SaleItems { get; set; }
     public DbSet<Planting> Plantings { get; set; }
+    public FarmContext(DbContextOptions<FarmContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
