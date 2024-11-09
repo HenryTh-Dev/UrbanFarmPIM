@@ -76,8 +76,7 @@ public class SupplierController : Controller
     {
         if (id != supplier.SupplierId) return NotFound();
 
-        if (ModelState.IsValid)
-        {
+
             try
             {
                 _context.Update(supplier);
@@ -89,8 +88,7 @@ public class SupplierController : Controller
                 throw;
             }
             return RedirectToAction(nameof(Index));
-        }
-        return View(supplier);
+        
     }
 
     // GET: Supplier/Delete/5

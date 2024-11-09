@@ -76,8 +76,6 @@ public class ResourceController : Controller
     {
         if (id != resource.ResourceId) return NotFound();
 
-        if (ModelState.IsValid)
-        {
             try
             {
                 _context.Update(resource);
@@ -89,8 +87,7 @@ public class ResourceController : Controller
                 throw;
             }
             return RedirectToAction(nameof(Index));
-        }
-        return View(resource);
+       
     }
 
     // GET: Resource/Delete/5

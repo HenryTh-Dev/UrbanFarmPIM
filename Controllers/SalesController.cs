@@ -87,8 +87,7 @@ public class SaleController : Controller
     {
         if (id != sale.SaleId) return NotFound();
 
-        if (ModelState.IsValid)
-        {
+
             try
             {
                 _context.Update(sale);
@@ -98,11 +97,9 @@ public class SaleController : Controller
             {
                 if (!SaleExists(sale.SaleId)) return NotFound();
                 throw;
-            }
+            }   
             return RedirectToAction(nameof(Index));
-        }
-        ViewData["ClientId"] = new SelectList(_context.Clients, "ClientId", "Name", sale.ClientId);
-        return View(sale);
+       
     }
 
     // GET: Sale/Delete/5
