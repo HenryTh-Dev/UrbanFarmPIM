@@ -3,22 +3,34 @@
 <div class="container mt-5">
     <div class="text-center mb-5">
         <h1 class="display-4">Nosso catálogo</h1>
-        <p class="lead"><a href="" class="btn btn-success mt-3"><i class="fa fa-whatsapp" style="font-size:24px"></i>    Clique em comparar para entrar em contato com nossos vendedores!</a></p>
+        <p class="lead">
+            <a href="" class="btn btn-success mt-3">
+                <i class="fa fa-whatsapp" style="font-size:24px"></i>
+                Clique em comprar para entrar em contato com nossos vendedores!
+            </a>
+        </p>
     </div>
 
-    @if (Model != null && Model.Any())
+    @if (Model != null && Model.Any(r => r.Type == "Colheita"))
     {
         <div class="row">
-            @foreach (var item in Model)
+            @foreach (var item in Model.Where(r => r.Type == "Colheita"))
             {
                 <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100 d-flex flex-column">
+                    <div class="card shadow-sm h-100 d-flex flex-column position-relative">
+
+                        <!-- Slightly larger image in top-right corner -->
+                        <img src="@item.ImagePath" alt="@item.Name"
+                             style="width: 120px; height: 120px; object-fit: cover; position: absolute; top: 10px; right: 10px; border-radius: 8px;">
+
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">@item.Name</h5>
                             <p class="card-text">@item.Description</p>
                             <p class="card-text"><strong>Estoque:</strong> @item.Quantity</p>
                             <p class="card-text"><strong>Preço:</strong> R$ @item.Price.ToString("F2")</p>
-                            <a href="https://api.whatsapp.com/send/?phone=5518981129603&text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+a+compra+de+@item.Name.&type=phone_number&app_absent=0" class="btn btn-success mt-2">Comprar Agora</a>
+                            <a href="https://api.whatsapp.com/send/?phone=5518999999999&text=Olá%2C+gostaria+de+informações+sobre+a+compra+de+@item.Name.&type=phone_number&app_absent=0"
+                               class="btn btn-success mt-2"
+                               style="padding: 5px 10px; font-size: 0.9rem;">Comprar Agora</a>
                         </div>
                     </div>
                 </div>

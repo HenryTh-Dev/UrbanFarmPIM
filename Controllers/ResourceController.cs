@@ -46,13 +46,20 @@ public class ResourceController : Controller
     // POST: Resource/Create
     [HttpPost("Create")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ResourceId,Name,Type,Description,Quantity,Price")] Resource resource)
+    public async Task<IActionResult> Create([Bind("ResourceId,Name,Type,Description,Quantity,Price")] Resource resource, IFormFile imageFile)
     {
 
-            _context.Add(resource);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var imagePath = Path.Combine("wwwroot/images", imageFile.FileName);
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(stream);
+            }
+            resource.ImagePath = "/images/" + imageFile.FileName;
         
+
+        _context.Add(resource);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: Resource/Edit/5
@@ -67,26 +74,44 @@ public class ResourceController : Controller
         return View(resource);
     }
 
-    // POST: Resource/Edit/5
     [HttpPost("Edit/{id}")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("ResourceId,Name,Type,Description,Quantity,Price")] Resource resource)
+    public async Task<IActionResult> Edit(int id, [Bind("ResourceId,Name,Type,Description,Quantity,Price,ImagePath")] Resource resource, IFormFile imageFile)
     {
-        if (id != resource.ResourceId) return NotFound();
+        if (id != resource.ResourceId)
+        {
+            return NotFound();
+        }
 
-            try
+        if (imageFile != null && imageFile.Length > 0)
+        {
+            var imagePath = Path.Combine("wwwroot/images", imageFile.FileName);
+            using (var stream = new FileStream(imagePath, FileMode.Create))
             {
-                _context.Update(resource);
-                await _context.SaveChangesAsync();
+                await imageFile.CopyToAsync(stream);
             }
-            catch (DbUpdateConcurrencyException)
+            resource.ImagePath = "/images/" + imageFile.FileName;
+        }
+
+        try
+        {
+            _context.Update(resource);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!ResourceExists(resource.ResourceId))
             {
-                if (!ResourceExists(resource.ResourceId)) return NotFound();
+                return NotFound();
+            }
+            else
+            {
                 throw;
             }
-            return RedirectToAction(nameof(Index));
-       
+        }
+        return RedirectToAction(nameof(Index));
     }
+
 
     // GET: Resource/Delete/5
     [HttpGet("Delete/{id}")]

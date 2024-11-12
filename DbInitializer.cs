@@ -54,11 +54,11 @@ public class DbInitializer
         // Inserindo Recursos específicos para cada cultura
         var resources = new[]
         {
-            new Resource { Name = "Milho", Type = "Colheita", Description = "Grãos de milho", Quantity = 1000, Price = 3.50 },
-            new Resource { Name = "Soja", Type = "Colheita", Description = "Grãos de soja", Quantity = 800, Price = 4.00 },
-            new Resource { Name = "Trigo", Type = "Colheita", Description = "Grãos de trigo", Quantity = 700, Price = 2.80 },
-            new Resource { Name = "Feijão", Type = "Colheita", Description = "Grãos de feijão", Quantity = 600, Price = 5.00 },
-            new Resource { Name = "Arroz", Type = "Colheita", Description = "Grãos de arroz", Quantity = 1200, Price = 2.50 }
+            new Resource { Name = "Milho", Type = "Colheita", Description = "Grãos de milho", Quantity = 1000, Price = 3.50,ImagePath = "/images/milho.jpg"},
+            new Resource { Name = "Soja", Type = "Colheita", Description = "Grãos de soja", Quantity = 800, Price = 4.00,ImagePath = "/images/soja.jpg" },
+            new Resource { Name = "Trigo", Type = "Colheita", Description = "Grãos de trigo", Quantity = 700, Price = 2.80,ImagePath = "/images/trigo.jpg" },
+            new Resource { Name = "Feijão", Type = "Colheita", Description = "Grãos de feijão", Quantity = 600, Price = 5.00,ImagePath = "/images/feijao.jpg" },
+            new Resource { Name = "Arroz", Type = "Colheita", Description = "Grãos de arroz", Quantity = 1200, Price = 2.50,ImagePath = "/images/arroz.jpg" }
         };
         _context.Resources.AddRange(resources);
         _context.SaveChanges();

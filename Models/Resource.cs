@@ -15,7 +15,8 @@ namespace UrbanFarm.Models
         public int Quantity { get; set; }
         public double Price { get; set; }
         [JsonIgnore]
-        public ICollection<Planting> Plantings { get; set; } // Associado ao plantio, se for um produto
+        public ICollection<Planting> Plantings { get; set; } 
+        public string ImagePath { get; set; } 
     }
 
 }
