@@ -15,6 +15,18 @@ public class PlantingAreaController : Controller
         _context = context;
     }
 
+    [HttpGet("api/")]
+    public ActionResult<IEnumerable<PlantingArea>> GetPlantingAreas()
+    {
+        var plantingAreas = _context.PlantingAreas
+            .Include(pa => pa.Farm)                          // Carrega a fazenda associada
+            .Include(pa => pa.Plantings)                      // Carrega os plantios associados
+                .ThenInclude(p => p.Resource)                // Carrega o recurso associado a cada plantio
+            .ToList();
+
+        return Ok(plantingAreas); // Retorna como JSON com todas as relações
+    }
+
     // GET: PlantingArea
     [HttpGet("")]
     public async Task<IActionResult> Index()
@@ -52,14 +64,11 @@ public class PlantingAreaController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("PlantingAreaId,Name,Size,FarmId")] PlantingArea plantingArea)
     {
-        if (ModelState.IsValid)
-        {
+
             _context.Add(plantingArea);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        ViewData["FarmId"] = new SelectList(_context.Farms, "FarmId", "Name", plantingArea.FarmId);
-        return View(plantingArea);
+           return RedirectToAction(nameof(Index));
+
     }
 
     // GET: PlantingArea/Edit/5

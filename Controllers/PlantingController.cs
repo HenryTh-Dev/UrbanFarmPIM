@@ -58,16 +58,11 @@ public class PlantingController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("PlantingId,PlantingDate,PlantingAreaId,ResourceId,Employees")] Planting planting)
     {
-        if (ModelState.IsValid)
-        {
+
             _context.Add(planting);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-        ViewData["PlantingAreaId"] = new SelectList(_context.PlantingAreas, "PlantingAreaId", "Name", planting.PlantingAreaId);
-        ViewData["ResourceId"] = new SelectList(_context.Resources, "ResourceId", "Name", planting.ResourceId);
-        ViewData["Employees"] = new MultiSelectList(_context.Employees, "EmployeeId", "Name", planting.Employees.Select(e => e.EmployeeId));
-        return View(planting);
+       
     }
 
     // GET: Planting/Edit/5
@@ -94,8 +89,6 @@ public class PlantingController : Controller
     {
         if (id != planting.PlantingId) return NotFound();
 
-        if (ModelState.IsValid)
-        {
             try
             {
                 _context.Update(planting);
@@ -107,7 +100,7 @@ public class PlantingController : Controller
                 throw;
             }
             return RedirectToAction(nameof(Index));
-        }
+        
         ViewData["PlantingAreaId"] = new SelectList(_context.PlantingAreas, "PlantingAreaId", "Name", planting.PlantingAreaId);
         ViewData["ResourceId"] = new SelectList(_context.Resources, "ResourceId", "Name", planting.ResourceId);
         ViewData["Employees"] = new MultiSelectList(_context.Employees, "EmployeeId", "Name", planting.Employees.Select(e => e.EmployeeId));

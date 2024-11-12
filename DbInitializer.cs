@@ -43,11 +43,11 @@ public class DbInitializer
         // Inserindo Funcionários
         var employees = new[]
         {
-            new Employee { Name = "João Silva", CPF = "123.456.789-10", Position = "Gerente de Produção", Salary = 4500.00m, HireDate = new DateTime(2022, 1, 15) },
-            new Employee { Name = "Maria Oliveira", CPF = "234.567.890-20", Position = "Agrônoma", Salary = 3800.00m, HireDate = new DateTime(2021, 5, 10) },
-            new Employee { Name = "Carlos Souza", CPF = "345.678.901-30", Position = "Técnico Agrícola", Salary = 3200.00m, HireDate = new DateTime(2023, 2, 5) },
-            new Employee { Name = "Ana Lima", CPF = "456.789.012-40", Position = "Assistente Administrativo", Salary = 2500.00m, HireDate = new DateTime(2020, 11, 20) },
-            new Employee { Name = "Pedro Ramos", CPF = "567.890.123-50", Position = "Motorista", Salary = 2800.00m, HireDate = new DateTime(2022, 7, 25) }
+            new Employee { Name = "João Silva", CPF = "123.456.789-10", Position = "Gerente de Produção", Salary = 4500.00m, HireDate = new DateTimeOffset(2022, 1, 15, 0, 0, 0, TimeSpan.Zero) },
+            new Employee { Name = "Maria Oliveira", CPF = "234.567.890-20", Position = "Agrônoma", Salary = 3800.00m, HireDate = new DateTimeOffset(2021, 5, 10, 0, 0, 0, TimeSpan.Zero) },
+            new Employee { Name = "Carlos Souza", CPF = "345.678.901-30", Position = "Técnico Agrícola", Salary = 3200.00m, HireDate = new DateTimeOffset(2023, 2, 5, 0, 0, 0, TimeSpan.Zero) },
+            new Employee { Name = "Ana Lima", CPF = "456.789.012-40", Position = "Assistente Administrativo", Salary = 2500.00m, HireDate = new DateTimeOffset(2020, 11, 20, 0, 0, 0, TimeSpan.Zero) },
+            new Employee { Name = "Pedro Ramos", CPF = "567.890.123-50", Position = "Motorista", Salary = 2800.00m, HireDate = new DateTimeOffset(2022, 7, 25, 0, 0, 0, TimeSpan.Zero) }
         };
         _context.Employees.AddRange(employees);
 
@@ -91,7 +91,7 @@ public class DbInitializer
         {
             var sale = new Sale
             {
-                SaleDate = DateTime.Now.AddDays(-10 * i),
+                SaleDate = DateTimeOffset.Now.AddDays(-10 * i),
                 ClientId = clients[i].ClientId,
                 TotalAmount = 1500.00m + (100 * i)
             };
@@ -113,7 +113,7 @@ public class DbInitializer
         {
             var planting = new Planting
             {
-                PlantingDate = DateTime.Now.AddMonths(-i),
+                PlantingDate = DateTimeOffset.Now.AddMonths(-i),
                 PlantingAreaId = plantingAreas[i].PlantingAreaId,
                 ResourceId = resources[i].ResourceId
             };

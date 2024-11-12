@@ -48,13 +48,11 @@ public class ResourceController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("ResourceId,Name,Type,Description,Quantity,Price")] Resource resource)
     {
-        if (ModelState.IsValid)
-        {
+
             _context.Add(resource);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-        return View(resource);
+        
     }
 
     // GET: Resource/Edit/5
