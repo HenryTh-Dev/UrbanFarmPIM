@@ -1,11 +1,35 @@
 ﻿@{
     ViewBag.Title = "Urban Farm - Página Inicial";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UrbanFarm</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/UrbanFarm.styles.css" asp-append-version="true" />
+</head>
+<body>
 
-<div class="container">
-    <div class="jumbotron text-center bg-success text-white">
-        <h1 class="display-4">Bem-vindo à Urban Farm!</h1>
-        <p class="lead">Aqui você encontra tudo sobre agricultura urbana, sustentabilidade e como cultivar seu próprio alimento em casa. Explore nosso conteúdo e torne-se um especialista em cultivo urbano.</p>
+    <div style="    margin: 0;
+    padding: 0;
+    background-image: url('/images/fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;">
+
+<div  class="container">
+            <div class="jumbotron text-center bg-success text-white">
+                <h1  class="display-4">
+            <img src="/images/logo.png" style="height: 2.5em;"> Bem-vindo à Urban Farm!
+        </h1>
+        <p class="lead">
+            Aqui você encontra tudo sobre agricultura urbana, sustentabilidade e como cultivar seu próprio alimento em casa. Explore nosso conteúdo e torne-se um especialista em cultivo urbano.
+        </p>
     </div>
 
     <div class="row text-center my-5">
@@ -23,10 +47,10 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100 d-flex flex-column">
                 <div class="card-body d-flex flex-column">
-                    <h2 class="card-title">Confira nossos Produtos</h2>                            
+                    <h2 class="card-title">Confira nossos Produtos</h2>
                     <p class="card-text">Confira nossos produtos para começar sua própria horta urbana.</p>
                     <div class="mt-auto">
-                       <a asp-area ="" asp-controller="Resource" asp-action="Index" class="btn btn-primary mt-3">Ver Produtos</a>
+                        <a asp-area="" asp-controller="Resource" asp-action="Index" class="btn btn-primary mt-3">Ver Produtos</a>
                     </div>
                 </div>
             </div>
@@ -44,3 +68,6 @@
         </div>
     </div>
 </div>
+</div>
+</body>
+</html>

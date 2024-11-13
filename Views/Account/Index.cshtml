@@ -1,0 +1,31 @@
+﻿@page
+@model UrbanFarm.Views.Account.IndexModel
+@{
+}
+<body style="background-color: #f7f7f7; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h3 class="text-center mb-4">Login</h3>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "card p-4 shadow-sm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Digite seu email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Digite sua senha" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-3">Entrar</button>
+                }
+                <p class="text-center mt-3">
+                    <a href="#">Esqueceu sua senha?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
