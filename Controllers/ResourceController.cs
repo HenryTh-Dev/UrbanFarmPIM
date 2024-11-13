@@ -42,6 +42,11 @@ public class ResourceController : Controller
     {
         return View();
     }
+    [HttpGet("Admin")]
+    public async Task<IActionResult> Admin()
+    {
+        return View(await _context.Resources.ToListAsync());
+    }
 
     // POST: Resource/Create
     [HttpPost("Create")]

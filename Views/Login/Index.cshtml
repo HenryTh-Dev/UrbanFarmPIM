@@ -1,0 +1,34 @@
+@model UrbanFarmPIM.Models.Account
+<div style="background-color:white;">
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form asp-action="Index" method="post">
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+
+        <!-- Mensagem de erro de autenticação -->
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="text-danger mt-2">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+    </form>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace UrbanFarm.Views.Account
+namespace UrbanFarm.Views.Resource
 {
-    public class IndexModel : PageModel
+    public class AdminModel : PageModel
     {
         public void OnGet()
         {

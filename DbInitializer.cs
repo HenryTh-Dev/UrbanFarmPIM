@@ -1,6 +1,7 @@
 ﻿using UrbanFarm.Models;
 using System;
 using System.Linq;
+using UrbanFarmPIM.Models;
 
 public class DbInitializer
 {
@@ -119,6 +120,15 @@ public class DbInitializer
             };
             _context.Plantings.Add(planting);
         }
+
+        var account = new Account
+        {
+            AccountId = 1,
+            Email = "henryth.dev@gmail.com",
+            Password = "12345",
+            ClientId = 1
+        };
+        _context.Accounts.Add(account);
 
         _context.SaveChanges();
     }
