@@ -57,14 +57,9 @@ public class SaleController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("SaleId,SaleDate,ClientId,TotalAmount")] Sale sale)
     {
-        if (ModelState.IsValid)
-        {
             _context.Add(sale);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-        ViewData["ClientId"] = new SelectList(_context.Clients, "ClientId", "Name", sale.ClientId);
-        return View(sale);
     }
 
     // GET: Sale/Edit/5

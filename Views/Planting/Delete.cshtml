@@ -16,19 +16,12 @@
         <dt class="col-sm-2">Resource</dt>
         <dd class="col-sm-10">@Model.Resource?.Name</dd>
 
-        <dt class="col-sm-2">Employees</dt>
         <dd class="col-sm-10">
-            <ul>
-                @foreach (var employee in Model.Employees)
-                {
-                    <li>@employee.Name</li>
-                }
-            </ul>
         </dd>
     </dl>
 </div>
 
-<form asp-action="DeleteConfirmed" method="post">
+<form asp-action="Delete" method="post">
     <input type="hidden" asp-for="PlantingId" />
     <button type="submit" class="btn btn-danger">Delete</button> |
     <a asp-action="Index">Back to List</a>
